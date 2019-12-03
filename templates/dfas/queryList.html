@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<body>
+        <div class="container" align="center">
+            <h3 align="center" style="color:801818;"><b>Sonuçlar</b></h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <h5 align="right">
+                        <th scope="col"><h3 style="color:801818"><b>Mekan İsmi</b></h3></th>
+                        <th scope="col"><h3 style="color:blue"><b>Şuanda Mekanda ki Kullanıcı</b></h3></th>
+                        <th scope="col"><h3 style="color:e7af26"><b>Mekanın Toplam Ziyretçi Sayısı</b></h3></th>
+                    </h5>
+                </tr>
+                </thead>
+             <tbody>
+                {% for qvenue in query_venue %}
+                    <tr>
+                        <td><a href="query_detail_view/{{qvenue.id}}" >{{qvenue.name}}</a></td>
+                        <td> {{qvenue.now_count}}</td>
+                        <td> {{qvenue.users_count}}</td>
+                    </tr>
+                {% endfor %}
+             </tbody>
+            </table>
+        </div>
+</body>
+
+{% endblock %}
+

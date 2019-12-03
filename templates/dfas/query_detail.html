@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+        <div class="container text-center">
+            <h3 style="color:black"><b>{{mekan_detay.name}}</b></h3>
+            <div>
+
+            </div>
+            <div class="card-image">
+                <img src={{mekan_detay.photo}} height="250" width="200"/>
+            </div>
+        </div>
+
+        <div class="container" align="center">
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Mekan Bilgileri ve Değerlendirmeler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <h5>
+                        <tr>
+                            <th scope="row">Mekan İsmi:</th>
+                            <td>{{mekan_detay.name}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Telefon:</th>
+                            <td>{{mekan_detay.phone}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Adres:</th>
+                            <td>{{mekan_detay.address}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Rating:</th>
+                            <td>{{mekan_detay.rating}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Mekanda Check-in Yapan Zİyretçi: <th>
+                            <td>{{mekan_detay.users_count}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Twitter:</th>
+                            <td>@{{mekan_detay.twiter}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Check-in Sayısı:</th>
+                            <td>{{mekan_detay.checkin_count}}</td>
+                        </tr>
+                       <tr>
+                            <th scope="row">Beğeni Sayısı:</th>
+                            <td>{{mekan_detay.likes}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">En iyi İlk 5 Yorum:</th>
+                            <td>
+
+                            </td>
+                        </tr>
+                    </h5>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+</div>
+<div class="container">
+
+<body>
+  <h4 class="header">Kullanıcı Yorumları</h4>
+  {% for us in user_list  %}
+  <div class="col-md-6 col-md-offset-3">
+      <table class="table">
+        <div class="card horizontal">
+            <div class="card-image">
+                <img src={{us.user_photo}} height="50" width="50"/>
+            </div>
+            <div class="card-body">
+                <div class="card-content">
+                <p><h5 style="color:blue;" >{{us.firstName}} {{us.lastName}}</h5> <h4 align="center" > {{us.text}} </h4>
+                </p>
+                </div>
+            </div>
+        </div>
+    </table>
+  </div>
+  {% endfor %}
+</body>
+</div>
+{% endblock %}
