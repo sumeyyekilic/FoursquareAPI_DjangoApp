@@ -1,6 +1,5 @@
 from django.shortcuts import render
 import requests
-from pandas.io.json import json_normalize
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, redirect
 from django.urls import reverse
