@@ -68,8 +68,8 @@ def query_detail_view(request, venue_id):
 	detay_Url= urllib.parse.urlencode(detayParam)
 	detay_request = 'https://api.foursquare.com/v2/venues/' + venue_id + '?' +detay_Url
 	response = requests.get(detay_request)
-	response = response.json()
-	mekanlar= response["response"]["venue"]
+	fjson = response.json()
+	mekanlar= fjson["response"]["venue"]
 	mekan_detay ={}
 	try:
 		urlPrefix = mekanlar['photos']['groups'][0]['items'][0]['prefix']
@@ -77,16 +77,17 @@ def query_detail_view(request, venue_id):
 		rPhoto = urlPrefix + '110x110' + urlSuffix
 	except:
 		rPhoto = " "
+
 	mekan_detay['photo'] = rPhoto
 	mekan_detay['name'] = mekanlar['name']
-	mekan_detay['likes']= mekanlar['likes'].get('count',',,')
+	mekan_detay['likes'] = mekanlar['likes'].get('count',',,')
 	mekan_detay['phone'] = mekanlar['contact'].get("phone", "-")
 	mekan_detay['address'] = mekanlar['location'].get("address", "-")
 	mekan_detay['twiter'] = mekanlar['contact'].get("twitter", "-")
 	mekan_detay["users_count"] = mekanlar['stats'].get("usersCount", "-")
 	mekan_detay["checkin_count"] = mekanlar['stats'].get("checkinsCount", "-")
 
-	#kullamıcıdan limit=5 yorum için parametre tanımım
+#kullamıcıdan limit=5 yorum için parametre tanımım
 	parameters = {
 		'oauth_token': 'BIH2RYEL3G20JYPXJX4LNZ01EL3VTMC0QXDNOTZKE5NZRAJL',
 		'v': '20180604',
