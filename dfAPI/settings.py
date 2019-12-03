@@ -31,8 +31,7 @@ SECRET_KEY = 'pn09ok472&e2!6-zfbih%oy0uphg%vh4m$a9ndf2c4k8qfp1uc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["https://dj-fapi-app.herokuapp.com"]
 
 
 # Application definition
