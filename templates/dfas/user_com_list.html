@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<body>
+    <div class="container">
+        <body>
+            <h4 class="header"></h4>
+            {% for user in user_list%}
+                <div class="col-md-6 col-md-offset-3">
+                <table class="table">
+                <div class="card horizontal">
+                    <div class="card-image">
+                        <img src={{user.user_photo}} height="50" width="50"/>
+                    </div>
+                <div class="card-body">
+                    <div class="card-content">
+                        {% if user %}
+                            <td><a href="user_comment_view/{{user.id}}"><h5 style="color:blue;" >{{user.firstName}} {{user.lastName}}</h5></a>
+                                <h4 align="center" > {{user.text}} </h4>
+                            </td>
+                        {% endif %}
+                    </div>
+                </div>
+                </div>
+                </table>
+                </div>
+            {% endfor %}
+        </body>
+    </div>
+</body>
+
+{% endblock %}

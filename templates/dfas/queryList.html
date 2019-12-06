@@ -7,9 +7,9 @@
                 <thead>
                 <tr>
                     <h5 align="right">
-                        <th scope="col"><h3 style="color:801818"><b>Mekan İsmi</b></h3></th>
-                        <th scope="col"><h3 style="color:blue"><b>Şuanda Mekanda ki Kullanıcı</b></h3></th>
-                        <th scope="col"><h3 style="color:e7af26"><b>Mekanın Toplam Ziyretçi Sayısı</b></h3></th>
+                        <th scope="col"><h4 style="color:801818"><b>Mekan İsmi</b></h4></th>
+                        <th scope="col"><h4 style="color:e7af26"><b>Şuanda Mekanda ki Kullanıcı</b></h4></th>
+                        <th scope="col"><h4 style="color:e7af26"><b>Adres Özeti</b></h4></th>
                     </h5>
                 </tr>
                 </thead>
@@ -18,7 +18,7 @@
                     <tr>
                         <td><a href="query_detail_view/{{qvenue.id}}" >{{qvenue.name}}</a></td>
                         <td> {{qvenue.now_count}}</td>
-                        <td> {{qvenue.users_count}}</td>
+                        <td> {{qvenue.address}}</td>
                     </tr>
                 {% endfor %}
              </tbody>

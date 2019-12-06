@@ -19,7 +19,8 @@ def query_venue_view(request):
 		query_form.location = query_form.cleaned_data['location']
 		query_form.venue = query_form.cleaned_data['venue']
 		query_form.limit = query_form.cleaned_data['limit']
-		parameters = {
+		#url'ye gönderilecek gerekli parametreler format metodu ile de atanabilir.
+		queryParam = {
 			'client_id':CLIENT_ID,
 			'client_secret':CLIENT_SECRET,
 			'near': query_form.location,
@@ -27,7 +28,7 @@ def query_venue_view(request):
 			'limit': query_form.limit,
 			'v': '20180111'
 		}
-		url_params = urllib.parse.urlencode(parameters)
+		url_params = urllib.parse.urlencode(queryParam)
 		response = requests.get("https://api.foursquare.com/v2/venues/search", url_params)
 		fjson = response.json()
 		response2 = fjson['response']['venues']
@@ -38,6 +39,7 @@ def query_venue_view(request):
 			query_dict['ratings'] = venue.get('rating',',,')
 			query_dict['name'] = venue.get('name', "---")
 			query_dict['phone'] = venue['contact'].get("phone", "iletişim yok")
+			query_dict['address2'] = venue['location'].get('formattedAddress', "iletişim yok")
 			query_dict['address'] = venue['location'].get('address', "iletişim yok")
 			query_dict['users_count'] = venue['stats'].get('usersCount', "---")
 			query_dict['now_count'] = venue['hereNow'].get('count', "---")
@@ -51,13 +53,14 @@ def query_venue_view(request):
 		query_form.location = ""
 		query_form.venue = ""
 		query_form.limit = ""
+	context = {'form': query_form,
+			   'query_venue': query_venue,
+			   'searched_location': query_form.location,
+			   'searched_venue': query_form.venue,
+			   'searched_limit': query_form.limit}
+	return render(request, 'dfas/query_venue.html', context)
 
-	return render(request, 'dfas/query_venue.html', context={'form': query_form,
-															 'query_venue':query_venue,
-															 'searched_location': query_form.location,
-															 'searched_venue': query_form.venue,
-															 'searched_limit': query_form.limit})
-
+#sorgulanan konumda ki mekanın detay bilgilerini çekme
 def query_detail_view(request, venue_id):
 	detayParam = {
 		'client_id': CLIENT_ID,
@@ -81,25 +84,25 @@ def query_detail_view(request, venue_id):
 	mekan_detay['name'] = mekanlar['name']
 	mekan_detay['likes'] = mekanlar['likes'].get('count',',,')
 	mekan_detay['phone'] = mekanlar['contact'].get("phone", "-")
-	mekan_detay['address'] = mekanlar['location'].get("address", "-")
+	mekan_detay['address'] = mekanlar['location'].get("formattedAddress", "-")
 	mekan_detay['twiter'] = mekanlar['contact'].get("twitter", "-")
 	mekan_detay["users_count"] = mekanlar['stats'].get("usersCount", "-")
 	mekan_detay["checkin_count"] = mekanlar['stats'].get("checkinsCount", "-")
 
 #kullamıcıdan limit=5 yorum için parametre tanımım
-	parameters = {
-		'oauth_token': 'BIH2RYEL3G20JYPXJX4LNZ01EL3VTMC0QXDNOTZKE5NZRAJL',
+	commentParam= {
+		'client_id': CLIENT_ID,
+		'client_secret': CLIENT_SECRET,
 		'v': '20180604',
 		'limit': '5',
-
 	}
 
 	#kullanıcıya ait tip verilerini getirme
-	api_url = urllib.parse.urlencode(parameters)
+	api_url = urllib.parse.urlencode(commentParam)
 	api_url = "https://api.foursquare.com/v2/venues/%s/tips?" % venue_id + api_url
 	response = requests.get(api_url)
-	response = response.json()
-	userTip = response["response"]["tips"]["items"]
+	fjson = response.json()
+	userTip = fjson["response"]["tips"]["items"]
 	user_list = []
 
 	for user in userTip:
@@ -111,7 +114,39 @@ def query_detail_view(request, venue_id):
 		user_k["firstName"] = user["user"].get("firstName", "---")
 		user_k["lastName"] = user["user"].get("lastName", "")
 		user_list.append(user_k)
-	return render(request, 'dfas/query_detail.html', context={'mekan_detay': mekan_detay,
-															  'user_list':user_list})
+
+	context = {'mekan_detay': mekan_detay,
+			   'user_list': user_list}
+	return render(request, 'dfas/query_detail.html', context )
 
 
+#yorumlarda ki kullanıcının detay dayfası
+def user_comment_view(request, user_id):
+	userParam = {
+		'client_id': CLIENT_ID,
+		'client_secret': CLIENT_SECRET,
+		'v': '20180604'
+	}
+	detay_Url = urllib.parse.urlencode(userParam)
+	detay_request = "https://api.foursquare.com/v2/venues/%s/tips?" % user_id + detay_Url
+	response = requests.get(detay_request)
+	response = response.json()
+	user = response["response"]["tips"]["items"]
+	user_detay = []
+	try:
+		user_photo1 = user["user"]["photo"].get("suffix", "---")
+		user_photo2 = "https://irs3.4sqi.net/img/user/" + "200x200" + user_photo1
+		rPhoto = user_photo2
+	except:
+		rPhoto = ' '
+	for user in user:
+		user_d = {}
+		user_d["user_photo"] = rPhoto
+		user_d["name"] = user["user"].get("firstName", "---")
+		user_d["lastName"] = user["user"].get("lastName", "")
+		user_d['gender'] = user['user'].get("gender", "--")
+		user_d["text"] = user.get("text", "---")
+		user_detay.append(user_d)
+
+	context = {'user_detay': user_detay}
+	return render(request,'dfas/user_detail.html', context)

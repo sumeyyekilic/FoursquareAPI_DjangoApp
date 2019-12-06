@@ -2,21 +2,21 @@
 {% block content %}
 
     <div class="container-fluid-without-padding bg-1 text-center">
-      <h4>Mekan Arama Fromu</h4>
+      <h4>Mekan Sorgulama Formu</h4>
     </div>
-
     <div class="grid-container bg-8 text-center">
-        <form method="GET" class="post-form">
+        <form method="GET" class="post-form" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit" style="color:black" class="save btn btn-warning" name="search-button">Arama</button>
         </form>
-
         <div>
                 <p align="center" class="bg-3">
                     <div class="post">
                         <h5 style="color:red" >
-                        <a href="?venue={{search.venue}}&location={{search.location}}&limit={{search.limit}}" style="text-decoration:none" >{{search.venue}} {{search.location}} {{ search.limit}} </a></h5>
+                        <div class="mdl-textfield mdl-js-textfield" >
+                        <a href="?venue={{search.venue}}&location={{search.location}}&limit={{search.limit}}" style="background-color: white;" >{{search.venue}} {{search.location}} {{ search.limit}} </a></h5>
+                        </div><br>
                     </div>
                 </p>
         </div>
@@ -25,7 +25,7 @@
     {% if query_venue %}
         {% include 'dfas/queryList.html' %}
     {% elif no_results %}
-    <h4 align="left" style="color:green;"><b>Aranılan sonuç bulunamadı!!!</b></h4>
+        <h4 align="left" style="color:red;"><b>Aranılan sonuç bulunamadı!!!</b></h4>
     {% endif %}
 </div>
 
