@@ -92,7 +92,8 @@ def query_detail_view(request, venue_id):
 
 #kullamıcıdan limit=5 yorum için parametre tanımım
 	commentParam= {
-
+		'client_id': CLIENT_ID,
+		'client_secret': CLIENT_SECRET,
 		'v': '20180604',
 		'limit': '5',
 	}
