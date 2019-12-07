@@ -84,14 +84,15 @@ def query_detail_view(request, venue_id):
 	mekan_detay['name'] = mekanlar['name']
 	mekan_detay['likes'] = mekanlar['likes'].get('count',',,')
 	mekan_detay['phone'] = mekanlar['contact'].get("phone", "-")
+	mekan_detay['ratings'] = mekanlar.get("rating")
 	mekan_detay['address'] = mekanlar['location'].get("formattedAddress", "-")
 	mekan_detay['twiter'] = mekanlar['contact'].get("twitter", "-")
-	mekan_detay["users_count"] = mekanlar['stats'].get("usersCount", "-")
+	mekan_detay["users_count"] = mekanlar['stats'].get('usersCount', "-")
 	mekan_detay["checkin_count"] = mekanlar['stats'].get("checkinsCount", "-")
 
 #kullamıcıdan limit=5 yorum için parametre tanımım
 	commentParam= {
-		'oauth_token': 'BIH2RYEL3G20JYPXJX4LNZ01EL3VTMC0QXDNOTZKE5NZRAJL',
+
 		'v': '20180604',
 		'limit': '5',
 	}
@@ -101,7 +102,7 @@ def query_detail_view(request, venue_id):
 	api_url = "https://api.foursquare.com/v2/venues/%s/tips?" % venue_id + api_url
 	response = requests.get(api_url)
 	fjson = response.json()
-	userTip = fjson["response"]["tips"]["items"]
+	userTip = fjson['response']['tips']['items']
 	user_list = []
 
 	for user in userTip:
