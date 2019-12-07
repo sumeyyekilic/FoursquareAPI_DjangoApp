@@ -14,7 +14,7 @@
                 <div class="card-body">
                     <div class="card-content">
                         {% if user %}
-                            <td><a href="user_comment_view/{{user.id}}"><h5 style="color:blue;" >{{user.firstName}} {{user.lastName}}</h5></a>
+                            <td><a href="user_comment_view/{{user.user.id}}"><h5 style="color:blue;" >{{user.firstName}} {{user.lastName}}</h5></a>
                                 <h4 align="center" > {{user.text}} </h4>
                             </td>
                         {% endif %}

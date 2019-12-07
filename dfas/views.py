@@ -92,6 +92,7 @@ def query_detail_view(request, venue_id):
 
 #kullamıcıdan limit=5 yorum için parametre tanımım
 	commentParam= {
+		'oauth_token': 'BIH2RYEL3G20JYPXJX4LNZ01EL3VTMC0QXDNOTZKE5NZRAJL',
 		'client_id': CLIENT_ID,
 		'client_secret': CLIENT_SECRET,
 		'v': '20180604',
@@ -123,9 +124,8 @@ def query_detail_view(request, venue_id):
 
 #yorumlarda ki kullanıcının detay dayfası
 def user_comment_view(request, user_id):
-	userParam = {
-		'client_id': CLIENT_ID,
-		'client_secret': CLIENT_SECRET,
+	'''userParam = {
+		'oauth_token': 'BIH2RYEL3G20JYPXJX4LNZ01EL3VTMC0QXDNOTZKE5NZRAJL',
 		'v': '20180604'
 	}
 	detay_Url = urllib.parse.urlencode(userParam)
@@ -143,11 +143,36 @@ def user_comment_view(request, user_id):
 	for user in user:
 		user_d = {}
 		user_d["user_photo"] = rPhoto
-		user_d["name"] = user["user"].get("firstName", "---")
+		#user_d["name"] = user['user'].get("firstName", "---")
 		user_d["lastName"] = user["user"].get("lastName", "")
 		user_d['gender'] = user['user'].get("gender", "--")
 		user_d["text"] = user.get("text", "---")
 		user_detay.append(user_d)
 
-	context = {'user_detay': user_detay}
+	context = {'user_detay': user_detay}'''
+	commentParam = {
+		'oauth_token': 'BIH2RYEL3G20JYPXJX4LNZ01EL3VTMC0QXDNOTZKE5NZRAJL',
+		'client_id': CLIENT_ID,
+		'client_secret': CLIENT_SECRET,
+		'v': '20180604',
+	}
+
+	# kullanıcıya ait tip verilerini getirme
+	api_url = urllib.parse.urlencode(commentParam)
+	api_url = "https://api.foursquare.com/v2/venues/%s/tips?" % user_id + api_url
+	response = requests.get(api_url)
+	fjson = response.json()
+	userTip = fjson['response']['tips']['items']
+	user_list = []
+
+	for user in userTip:
+		user_k = {}
+		user_photo = user["user"]["photo"].get("suffix", "---")
+		user_photo = "https://irs3.4sqi.net/img/user/" + "200x200" + user_photo
+		user_k["user_photo"] = user_photo
+		user_k["text"] = user.get("text", "---")
+		user_k["firstName"] = user["user"].get("firstName", "---")
+		user_k["lastName"] = user["user"].get("lastName", "")
+		user_list.append(user_k)
+	context={'user_list': user_list}
 	return render(request,'dfas/user_detail.html', context)
