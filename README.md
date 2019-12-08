@@ -27,7 +27,6 @@ Django ile yazılan kaynak kodlar yer alır.
 #### Mekan Sorgulama Web Uygulamasının Ekran Görüntüsü
 
 ![anaEkran1](https://github.com/sumeyyekilic/FoursquareAPI_DjangoApp/blob/master/Images/web/anaEkran1.png width="200" height="200")
-
 ## Foursquare Api  
 
 Belli türde mekan kategorisinde   :rose: :school: :pizza: :microphone: :swimmer: :airplane:  :coffee: :hospital: :ferris_wheel: , istenilen konum :tr: dahilinde sorgulama yapılmaktadır. Bu sorgulamaya istenilen limit eklenerek sorgulama sonucu bir tablo halinde listelenmektedir.
@@ -36,6 +35,7 @@ Geliştiricilere özel tanımlanan  Foursquare Apı'sinin geliştiriciye özel C
 ## Android Studio
 
 ![queryformandroid1](https://user-images.githubusercontent.com/36503536/70397370-ba98ae80-1a22-11ea-9249-32f425c738ad.jpg)
+![queryformandroid1](https://user-images.githubusercontent.com/36503536/70397368-ba001800-1a22-11ea-9820-4fa73befb135.jpg)
 
 ## Heroku 
 Heroku bulut bir uygulama platformudur. Geliştirdiğim projeyi Heroku ile yayına aldım. 
