@@ -25,7 +25,8 @@ Mekan Sorgulama uygulamasının [Django Uygulaması](https://github.com/sumeyyek
 Django ile yazılan kaynak kodlar yer alır. 
 
 #### Mekan Sorgulama Web Uygulamasının Ekran Görüntüsü
-![QueryFormAndroid1](https://github.com/sumeyyekilic/FoursquareAPI_DjangoApp/blob/master/Images/android/QueryFormAndroid1.jpg)
+
+![anaEkran1](https://github.com/sumeyyekilic/FoursquareAPI_DjangoApp/blob/master/Images/web/anaEkran1.png)
 
 ## Foursquare Api  
 
@@ -33,7 +34,9 @@ Belli türde mekan kategorisinde   :rose: :school: :pizza: :microphone: :swimmer
 Geliştiricilere özel tanımlanan  Foursquare Apı'sinin geliştiriciye özel CLIENT_ID ve CLIENT_SECRET tanımlar. Bu anahtarlar, uygulamayı kullanıcıların hesaplarına bağlamak için önemlidir.
 
 ## Android Studio
-android ekran görüntüsü ekle
+
+![QueryFormAndroid1](https://github.com/sumeyyekilic/FoursquareAPI_DjangoApp/blob/master/Images/android/QueryFormAndroid1.jpg)
+
 ## Heroku 
 Heroku bulut bir uygulama platformudur. Geliştirdiğim projeyi Heroku ile yayına aldım. 
 Heroku üzerinde database olarak Postgresql kullanma zorunluluğu vardır.
