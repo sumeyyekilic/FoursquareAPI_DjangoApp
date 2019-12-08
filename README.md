@@ -35,7 +35,7 @@ Geliştiricilere özel tanımlanan  Foursquare Apı'sinin geliştiriciye özel C
 
 ## Android Studio
 
-![queryformandroid1](https://resizeimage.net/viewimg/NGEThxR0gZfteQbR/JNJxW/queryformandroid1.jpg)
+![queryformandroid1](https://user-images.githubusercontent.com/36503536/70397370-ba98ae80-1a22-11ea-9249-32f425c738ad.jpg)
 
 ## Heroku 
 Heroku bulut bir uygulama platformudur. Geliştirdiğim projeyi Heroku ile yayına aldım. 
