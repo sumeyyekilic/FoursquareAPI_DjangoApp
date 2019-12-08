@@ -26,7 +26,7 @@ Django ile yazılan kaynak kodlar yer alır.
 
 #### Mekan Sorgulama Web Uygulamasının Ekran Görüntüsü
 
-![anaEkran1](https://github.com/sumeyyekilic/FoursquareAPI_DjangoApp/blob/master/Images/web/anaEkran1.png  width="200" height="200")
+![anaEkran1](https://github.com/sumeyyekilic/FoursquareAPI_DjangoApp/blob/master/Images/web/anaEkran1.png width="200" height="200")
 
 ## Foursquare Api  
 
