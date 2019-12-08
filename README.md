@@ -26,7 +26,12 @@ Django ile yazılan kaynak kodlar yer alır.
 
 #### Mekan Sorgulama Web Uygulamasının Ekran Görüntüsü
 
-![anaEkran1](https://github.com/sumeyyekilic/FoursquareAPI_DjangoApp/blob/master/Images/web/anaEkran1.png width="200" height="200")
+![anaekran1](https://user-images.githubusercontent.com/36503536/70397615-d604b900-1a24-11ea-9372-a8fb3d7d19cb.png)
+![anaekran3](https://user-images.githubusercontent.com/36503536/70397616-d604b900-1a24-11ea-9cad-f3d1d387d489.png)
+![querydetail4](https://user-images.githubusercontent.com/36503536/70397617-d604b900-1a24-11ea-83fc-2b0e4a3516d6.png)
+![querydetail5](https://user-images.githubusercontent.com/36503536/70397618-d69d4f80-1a24-11ea-929b-ec258f9fbd7f.png)
+![querysecren2](https://user-images.githubusercontent.com/36503536/70397619-d735e600-1a24-11ea-96c7-4394ff09eb5d.png)
+
 ## Foursquare Api  
 
 Belli türde mekan kategorisinde   :rose: :school: :pizza: :microphone: :swimmer: :airplane:  :coffee: :hospital: :ferris_wheel: , istenilen konum :tr: dahilinde sorgulama yapılmaktadır. Bu sorgulamaya istenilen limit eklenerek sorgulama sonucu bir tablo halinde listelenmektedir.
