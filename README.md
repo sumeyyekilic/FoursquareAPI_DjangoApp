@@ -51,3 +51,6 @@ Geliştiricilere özel tanımlanan  Foursquare Apı'sinin geliştiriciye özel C
 Heroku bulut bir uygulama platformudur. Geliştirdiğim projeyi Heroku ile yayına aldım. 
 Heroku üzerinde database olarak Postgresql kullanma zorunluluğu vardır.
 
+#License
+
+
