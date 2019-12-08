@@ -35,7 +35,7 @@ Geliştiricilere özel tanımlanan  Foursquare Apı'sinin geliştiriciye özel C
 
 ## Android Studio
 
-![QueryFormAndroid1](https://github.com/sumeyyekilic/FoursquareAPI_DjangoApp/blob/master/Images/android/QueryFormAndroid1.jpg)
+![queryformandroid1](https://resizeimage.net/viewimg/NGEThxR0gZfteQbR/JNJxW/queryformandroid1.jpg)
 
 ## Heroku 
 Heroku bulut bir uygulama platformudur. Geliştirdiğim projeyi Heroku ile yayına aldım. 
