@@ -20,5 +20,5 @@ pytz==2019.2
 requests==2.22.0
 requests-oauthlib==1.2.0
 sqlparse==0.3.0
-urllib3==1.25.3
+urllib3==1.26.5
 whitenoise==4.1.4
